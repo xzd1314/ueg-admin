@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { useAuth } from '../auth.jsx'
 import Icon from '../icons.jsx'
 import { Clock } from '../ui.jsx'
-import EarthEmblem from '../EarthEmblem.jsx'
 
 const NAV = [
   { group: '综合指挥', items: [
@@ -34,10 +33,8 @@ export default function Shell({ page, setPage, children }) {
       <div className={`sidebar-backdrop ${open ? 'show' : ''}`} onClick={() => setOpen(false)} />
       <aside className={`sidebar ${open ? 'open' : ''}`}>
         <div className="brand">
-          <div className="emblem-wrap"><EarthEmblem size={30} /></div>
           <div className="brand-text">
-            <div className="zh">联合政府管理中心</div>
-            <div className="en">UEG Administration</div>
+            <img src="/img/ueg-logo-full.png" alt="地球联合政府·UEG" style={{ height: 46, maxWidth: 210, mixBlendMode: 'screen', display: 'block' }} />
           </div>
         </div>
         <nav className="nav">
@@ -56,6 +53,8 @@ export default function Shell({ page, setPage, children }) {
         <div className="sidebar-foot">
           <img className="avatar-img" src="/img/avatar.jpg" alt="官员头像" />
           <div className="who">
+            <div className="org-name">联合政府管理中心</div>
+            <div className="org-en">UEG Administration</div>
             <div className="name">{displayName}</div>
             <div className="role">{user?.role || '联合政府 · 行政总署'}</div>
           </div>

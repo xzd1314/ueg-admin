@@ -30,7 +30,7 @@ export default function Overview({ go }) {
   return (
     <div>
       {/* 关键节点倒计时 —— 流浪地球事件 */}
-      <div className="panel hl" style={{ marginBottom: 22, padding: '28px 30px' }}>
+      <div className="panel hl" style={{ marginBottom: 22, padding: '30px 32px', background: 'linear-gradient(110deg, rgba(9,18,28,0.97) 30%, rgba(9,18,28,0.82) 55%, rgba(9,18,28,0.72)), url(/img/bg-qq2.webp) center/cover no-repeat' }}>
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 20, flexWrap: 'wrap' }}>
           <div style={{ flex: 1, minWidth: 240 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
@@ -95,6 +95,24 @@ export default function Overview({ go }) {
               <span className="mono" style={{ width: 44, color: 'var(--text-faint)' }}>{n.time}</span>
               <Badge status={n.tag} />
               <span className="grow small" style={{ cursor: 'pointer' }} onClick={() => go(n.page)}>{n.text}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* 联合政府发展规划（白底 art 图浅色展区） */}
+      <div className="section-gap" />
+      <div className="plan-section">
+        <div className="ps-head"><span className="bar" /><h3>联合政府 · 关键发展规划</h3><span className="en">Key Development Programs</span></div>
+        <div className="plan-grid">
+          {[
+            { img: '/img/art-space-elevator.png', t: '太空电梯 · 天地往返通道' },
+            { img: '/img/art-moon-plan.png', t: '逐月计划 · 远景能源战略' },
+            { img: '/img/art-scc.png', t: 'UEG-SCC · 飞控中心' },
+          ].map((p) => (
+            <div className="plan-item" key={p.t}>
+              <img src={p.img} alt={p.t} loading="lazy" />
+              <div className="ti">{p.t}</div>
             </div>
           ))}
         </div>

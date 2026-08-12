@@ -145,6 +145,8 @@ body {
 }
 .sidebar-foot .who .name { font-size: 13px; font-weight: 600; color: var(--text); }
 .sidebar-foot .who .role { font-size: 11px; color: var(--gold); margin-top: 1px; }
+.sidebar-foot .who .org-name { font-family: var(--font-zh); font-size: 12.5px; font-weight: 700; color: var(--text); letter-spacing: .04em; }
+.sidebar-foot .who .org-en { font-family: var(--font-en); font-size: 10px; letter-spacing: .2em; color: var(--gold); margin-bottom: 6px; text-transform: uppercase; }
 .logout-btn {
   margin-left: auto; background: transparent; border: 1px solid var(--border-strong);
   color: var(--text-muted); padding: 7px 10px; border-radius: 9px; cursor: pointer;
@@ -384,3 +386,95 @@ table.data tbody tr:last-child td { border-bottom: none; }
   .sidebar-backdrop { display: none; position: fixed; inset: 0; background: rgba(5, 12, 20, 0.6); z-index: 99; }
   .sidebar-backdrop.show { display: block; }
 }
+
+/* ============ 图片 / 背景 ============ */
+/* Logo 图：深色背景上的浅色图形用 screen 混合去底 */
+.ueg-img { mix-blend-mode: screen; filter: brightness(1.05); }
+/* 白底深色图用 multiply 去白底 */
+.ueg-img-multiply { mix-blend-mode: multiply; }
+
+/* 整页背景（登录页等）*/
+.login-wrap, .app-shell { position: relative; }
+.bg-photo {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-size: cover; background-position: center;
+}
+.login-wrap > *:not(.bg-photo) { position: relative; z-index: 1; }
+.bg-photo::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(10,21,31,0.84), rgba(10,21,31,0.6) 45%, rgba(10,21,31,0.92));
+}
+
+/* 卡片区局部背景图（总览 hero）*/
+.hero-bg {
+  background:
+    linear-gradient(110deg, rgba(9,18,28,0.97) 30%, rgba(9,18,28,0.82) 55%, rgba(9,18,28,0.7)),
+    url('/img/bg-qq2.webp') center/cover no-repeat;
+}
+
+/* 白色装饰图（太空电梯等，放浅色/点缀卡片）*/
+.art-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  background: #101a24;
+}
+.art-card img { width: 100%; display: block; mix-blend-mode: screen; }
+
+/* 浅色「发展规划」展区（白底 art 图在此自然显示）*/
+.plan-section {
+  background: linear-gradient(150deg, #f7f5f0, #ecece6);
+  border-radius: var(--radius);
+  padding: 26px 26px 22px;
+  color: #22303c;
+  box-shadow: var(--shadow-card);
+}
+.plan-section .ps-head { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.plan-section .ps-head h3 { font-family: var(--font-zh); font-size: 17px; font-weight: 700; color: #1b2733; }
+.plan-section .ps-head .en { font-family: var(--font-en); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #94a4b0; }
+.plan-section .bar { width: 4px; height: 18px; border-radius: 3px; background: linear-gradient(180deg, #c9a24b, #8a6d1f); }
+.plan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.plan-item { background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid #e3e0d6; box-shadow: 0 6px 20px -12px rgba(0,0,0,0.25); }
+.plan-item img { width: 100%; display: block; aspect-ratio: 16/10; object-fit: cover; background: #fff; }
+.plan-item .ti { padding: 10px 14px; font-family: var(--font-zh); font-size: 14px; font-weight: 600; color: #1b2733; border-top: 1px solid #eee; }
+@media (max-width: 760px) { .plan-grid { grid-template-columns: 1fr; } }
+
+/* ============ 深色条幅(置 550W 黑底 logo) ============ */
+.u550-wrap {
+  background: linear-gradient(120deg, #09141d, #0d1c2a);
+  border: 1px solid var(--border-strong);
+  border-radius: 14px;
+  padding: 22px 34px;
+  display: flex; align-items: center; justify-content: center;
+}
+.u550-wrap img { height: 64px; mix-blend-mode: screen; filter: brightness(1.1); }
+
+/* ============ 响应式（手机） ============ */
+@media (max-width: 680px) {
+  body { font-size: 13px; }
+  .content { padding: 18px 15px; }
+  .topbar { padding: 14px 15px; }
+  .topbar .page-title { font-size: 19px; }
+  .topbar .page-crumb { font-size: 9px; }
+  .clock .time { font-size: 18px; }
+  .clock .dt { font-size: 9px; }
+  .footer { padding: 16px 15px; flex-direction: column; gap: 4px; }
+  .panel { padding: 18px 16px; }
+  .stat-card { padding: 17px 16px; }
+  .stat-card .value { font-size: 28px; }
+  .countdown .cd-num { font-size: 34px; }
+  .countdown .cd-cell { min-width: 66px; }
+  .countdown .cd-sep { font-size: 28px; }
+  .login-card { padding: 30px 22px; border-radius: 16px; }
+  .login-head h1 { font-size: 24px; }
+  .login-head .emblem { width: 56px; height: 56px; }
+  .u550-wrap { padding: 16px 18px; }
+  .u550-wrap img { height: 46px; }
+  .brand { padding: 16px 14px; }
+  .nav { padding: 12px 10px; }
+  .grid { gap: 14px; }
+  .panel-title h3 { font-size: 15px; }
+  .login-wrap .login-header { font-size: 9px; letter-spacing: 0.16em; }
+}
+
