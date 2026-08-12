@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Icon from '../icons.jsx'
 
 const seed = [
   { title: '关于《流浪地球法》生育条款修订的意见征集', dept: '立法委员会', date: '2075-03-12', type: '意见征集', status: '进行中' },
@@ -7,8 +8,7 @@ const seed = [
   { title: '第十六届特别会议议程通知', dept: '大会秘书处', date: '2075-03-08', type: '会议通知', status: '已发布' },
   { title: '月球危机应急演练评估报告', dept: '安理会 · 监察署', date: '2075-03-05', type: '评估', status: '内部' },
 ]
-
-const statusMap = { '进行中': 'amber', '已发布': 'green', '内部': 'cyan' }
+const statusMap = { '进行中': 'gold', '已发布': 'green', '内部': 'blue' }
 
 export default function Notices() {
   const [rows, setRows] = useState(seed)
@@ -31,7 +31,7 @@ export default function Notices() {
             <div className="field"><label>公文标题</label><input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="输入通告标题…" required /></div>
             <div className="field"><label>发文部门</label><input value={dept} onChange={(e) => setDept(e.target.value)} placeholder="如：联合政府大会秘书处" required /></div>
             <div className="field"><label>正文</label><textarea placeholder="通告正文（前端演示）…" /></div>
-            <button className="btn primary" type="submit">保存并发布</button>
+            <button className="btn primary" type="submit"><Icon name="mail" size={15} />保存并发布</button>
           </form>
         </div>
 
