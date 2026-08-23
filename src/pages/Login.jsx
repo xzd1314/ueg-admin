@@ -1,6 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useAuth } from '../auth.jsx'
 import Icon from '../icons.jsx'
+
+const TURNSTILE_SITEKEY = '0x4AAAAAAEYslAufS7xZQ-Jn'
 
 export default function Login() {
   const { login } = useAuth()
@@ -9,10 +11,46 @@ export default function Login() {
   const [error, setError] = useState('')
   const [showPwd, setShowPwd] = useState(false)
   const [busy, setBusy] = useState(false)
+  const [cfToken, setCfToken] = useState('')
+  const turnstileRef = useRef(null)
+  const widgetIdRef = useRef(null)
+
+  // Render Turnstile when API is ready
+  useEffect(() => {
+    let cancelled = false
+    const render = () => {
+      if (cancelled || !turnstileRef.current || !window.turnstile) return
+      if (widgetIdRef.current) {
+        try { window.turnstile.remove(widgetIdRef.current) } catch (e) {}
+      }
+      try {
+        widgetIdRef.current = window.turnstile.render(turnstileRef.current, {
+          sitekey: TURNSTILE_SITEKEY,
+          theme: 'dark',
+          callback: (token) => setCfToken(token),
+          'error-callback': () => setCfToken(''),
+          'expired-callback': () => setCfToken(''),
+        })
+      } catch (e) {}
+    }
+    if (window.turnstile) {
+      render()
+    } else {
+      const tries = setInterval(() => {
+        if (window.turnstile) { clearInterval(tries); render() }
+      }, 200)
+      setTimeout(() => clearInterval(tries), 15000)
+    }
+    return () => { cancelled = true; if (widgetIdRef.current) { try { window.turnstile.remove(widgetIdRef.current) } catch (e) {} } }
+  }, [])
 
   const submit = (e) => {
     e.preventDefault()
     setError('')
+    if (!cfToken) {
+      setError('请先完成人机验证')
+      return
+    }
     setBusy(true)
     const res = login(username.trim(), password)
     if (!res.ok) { setError(res.error); setBusy(false) }
@@ -59,7 +97,12 @@ export default function Login() {
           </div>
         </div>
 
-        <button className="btn primary login-btn" type="submit" disabled={busy}>
+        {/* Cloudflare Turnstile 人机验证 */}
+        <div style={{ display: 'flex', justifyContent: 'center', margin: '12px 0 4px' }}>
+          <div ref={turnstileRef} />
+        </div>
+
+        <button className="btn primary login-btn" type="submit" disabled={busy || !cfToken}>
           <Icon name="lock" size={18} /> {busy ? '正在核验身份…' : '进入管理指挥舱'}
         </button>
 
