@@ -59,7 +59,7 @@ export default function Login() {
   return (
     <div className="login-wrap">
       {/* 背景照片（QQ 图，深色遮罩保证可读） */}
-      <div className="bg-photo" style={{ backgroundImage: 'url(/img/bg-qq1.webp)' }} />
+      <div className="bg-photo" style={{ backgroundImage: 'url(img/bg-qq1.webp)' }} />
 
       <div className="login-header">UNITED EARTH GOVERNMENT · 地球联合政府 · 行政总署登录网关</div>
 
@@ -67,7 +67,7 @@ export default function Login() {
         <div className="login-head">
           {/* UEG 官方徽标（深蓝底白色徽章，screen 混合去底） */}
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 6 }}>
-            <img src="/img/ueg-logo.png" alt="地球联合政府徽标" style={{ height: 120, mixBlendMode: 'screen', filter: 'brightness(1.08)' }} />
+            <img src="img/ueg-logo.png" alt="地球联合政府徽标" style={{ height: 120, mixBlendMode: 'screen', filter: 'brightness(1.08)' }} />
           </div>
           <h1>行政管理中心</h1>
           <div className="sub">UEG ADMINISTRATION CONSOLE</div>
@@ -75,7 +75,7 @@ export default function Login() {
           {/* 官员身份标识 */}
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 18 }}>
             <div style={{ width: 72, height: 72, borderRadius: '50%', border: '2px solid rgba(212,186,138,0.55)', padding: 3, boxShadow: '0 10px 30px -12px rgba(0,0,0,0.7)', background: 'rgba(255,255,255,0.04)' }}>
-              <img src="/img/avatar.jpg" alt="官员头像" style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} />
+              <img src="img/avatar.jpg" alt="官员头像" style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} />
             </div>
             <div style={{ marginTop: 10, fontSize: 15, fontWeight: 600, color: 'var(--text)' }}>执政官 · xzd1314</div>
             <div style={{ fontFamily: 'var(--font-en)', fontSize: 11, letterSpacing: '0.16em', color: 'var(--gold)', marginTop: 3, textTransform: 'uppercase' }}>Officer Identity Verified</div>
@@ -113,7 +113,7 @@ export default function Login() {
 
       {/* 550W 行星发动机 —— 新版黑底 logo，置于深色条幅（screen 去黑底） */}
       <div className="u550-wrap" style={{ marginTop: 26 }}>
-        <img src="/img/logo-550w.png" alt="550W 行星发动机" style={{ maxWidth: '100%' }} />
+        <img src="img/logo-550w.png" alt="550W 行星发动机" style={{ maxWidth: '100%' }} />
       </div>
       <div className="login-header" style={{ marginTop: 16 }}>流浪地球计划 · MOVE THE EARTH · 使地球成为人类永远的家园</div>
     </div>

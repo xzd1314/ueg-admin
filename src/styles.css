@@ -409,7 +409,7 @@ table.data tbody tr:last-child td { border-bottom: none; }
 .hero-bg {
   background:
     linear-gradient(110deg, rgba(9,18,28,0.97) 30%, rgba(9,18,28,0.82) 55%, rgba(9,18,28,0.7)),
-    url('/img/bg-qq2.webp') center/cover no-repeat;
+    url('img/bg-qq2.webp') center/cover no-repeat;
 }
 
 /* 白色装饰图（太空电梯等，放浅色/点缀卡片）*/

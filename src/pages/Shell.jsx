@@ -83,7 +83,7 @@ export default function Shell({ page, setPage, children }) {
       <aside className={`sidebar ${open ? 'open' : ''}`}>
         <div className="brand">
           <div className="brand-text">
-            <img src="/img/ueg-logo-full.png" alt="地球联合政府·UEG" style={{ height: 46, maxWidth: 210, mixBlendMode: 'screen', display: 'block' }} />
+            <img src="img/ueg-logo-full.png" alt="地球联合政府·UEG" style={{ height: 46, maxWidth: 210, mixBlendMode: 'screen', display: 'block' }} />
           </div>
         </div>
         <nav className="nav">
@@ -108,7 +108,7 @@ export default function Shell({ page, setPage, children }) {
           </div>
         </nav>
         <div className="sidebar-foot">
-          <img className="avatar-img" src="/img/avatar.jpg" alt="官员头像" />
+          <img className="avatar-img" src="img/avatar.jpg" alt="官员头像" />
           <div className="who">
             <div className="org-name">联合政府管理中心</div>
             <div className="org-en">UEG Administration</div>
