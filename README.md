@@ -53,3 +53,12 @@ npm run preview    # 预览构建产物
 源码仓库：https://github.com/xzd1314/ueg-admin
 
 > 本机若 `github.com` 主域名被污染（仅 api.github.com 可达）而无法 `git push`，可改用 GitHub REST Git Database API 推送；`.github/workflows` 无法通过 API 直接创建（GitHub 保留路径），如需 CI 自动部署请用 `git push` 补充。
+
+
+---
+
+## 许可 / License
+
+本项目使用 **MIT License**。
+
+详见 [LICENSE](LICENSE) 文件。
